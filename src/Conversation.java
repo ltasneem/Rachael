@@ -23,16 +23,19 @@ public class Conversation {
 	{
 		String strDirectoy = "Patients";
 		try{
-		    
-		    boolean success = (new File(strDirectoy)).mkdir();
-		    if (success) {
-		      System.out.println("Directory: " + strDirectoy + " created");
-		    }    
-
-
-		    }catch (Exception e){//Catch exception if any
-		      System.err.println("Error: " + e.getMessage());
-		    }  
+		    if(!(new File(strDirectoy)).isDirectory())
+		    {
+			    boolean success = (new File(strDirectoy)).mkdir();
+			    if (success) {
+			      System.out.println("Directory: " + strDirectoy + " created");
+			    }    
+	
+		    }
+		}
+			    catch (Exception e){//Catch exception if any
+			      System.err.println("Error: " + e.getMessage());
+			    } 
+		
 	}
 	/*
 	 * Creates directory for each patient
@@ -41,11 +44,13 @@ public class Conversation {
 	public void create_patient_directory(String patientname)
 	{
 		try{
-		    
+			if(!(new File(patientname)).isDirectory())
+		    {
 		    boolean success = (new File("Patients/"+patientname)).mkdir();
 		    if (success) {
 		      System.out.println("Directory: " + patientname + " created");
-		    }    
+		    }  
+		    }
 
 		    }catch (Exception e){//Catch exception if any
 		      System.err.println("Error: " + e.getMessage());
@@ -56,16 +61,17 @@ public class Conversation {
 	 * saves sessions in patient's directory as  txt files;
 	 * */
 	
-	public void create_session(String patientname, int session,ArrayList<String> file_s)
+	public void create_session(String patientname, ArrayList<String> file_s)
 	{
 		Iterator<String> iter1 = file_s.iterator();
+		int num_session = new File("Patient/"+patientname).listFiles().length;
 		PrintWriter writer=null;
 		 try {
-		     writer = new PrintWriter(new File("Patients/"+patientname+"/session"+session+".txt"));
+		     writer = new PrintWriter(new File("Patients/"+patientname+"/session"+num_session+".txt"));
 		     for (int i = 0; i < file_s.size(); i++) {
 		    	 	String s=iter1.next();
 		    	 	writer.println(s);
-		    	 	System.out.println(s);
+		    	 	//System.out.println(s);
 				}
 		 } catch (FileNotFoundException e) {
 		     System.out.println("File not found");
