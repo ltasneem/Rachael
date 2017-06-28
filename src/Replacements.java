@@ -1,9 +1,10 @@
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
 public class Replacements {
 
-	private HashMap<String><String> repMap;
+	private HashMap<String,String> repMap;
 	
 	public Replacements() {
 		repMap.put("I", "you");
