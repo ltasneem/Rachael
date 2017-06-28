@@ -25,9 +25,15 @@ public class Qualifier {
 		qualifierSet.add("Hmmm, What seems to be the problem with");
 		qualifierSet.add("Other people believe that");
 		qualifierSet.add("Why would you believe that");
-		qualifierSet.add("Do you kill people while you");
+		qualifierSet.add("Do you kill people while");
 		qualifierSet.add("Do you want to talk about why that");
 		qualifierSet.add("Do you see dead people that");
+		qualifierSet.add("I didn't know that");
+		qualifierSet.add("How likely is it that");
+		qualifierSet.add("Some of us in the industry also believe that");
+		qualifierSet.add("Was anyone watching you when");
+		qualifierSet.add("How does it make you feel that");
+		qualifierSet.add("Ultimately, the world doesn't care that");
 	
 	
 	
