@@ -61,7 +61,7 @@ public class Qualifier {
 	 * Selects a random qualifier to use from the set
 	 * @return random qualifier statement
 	 */
-	private String getRandomQualifier(){
+	public String getRandomQualifier(){
 		Random rand = new Random();
 		int index = rand.nextInt(qualifierSet.size());
 		Iterator<String> iter = qualifierSet.iterator();
