@@ -1,5 +1,5 @@
 /*
- * Eliza Chat Bot Implementation with 'Sentiniments'
+ * Eliza Chat Bot Implementation with 'Sentiments'
  * 
  * Toma Tadros
  * Srikant Kumar Kalaputapu
