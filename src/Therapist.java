@@ -34,5 +34,9 @@ public class Therapist {
 	public String question() {
 		return questionSet.get();
 	}
+
+	public String sentiment(String input){
+		return "GTFO";
+	}
 	
 }

@@ -66,7 +66,7 @@ public class Conversation {
 	public void create_session(String patientname, ArrayList<String> file_s)
 	{
 		Iterator<String> iter1 = file_s.iterator();
-		int num_session = new File("Patient/"+patientname).listFiles().length;
+		int num_session = new File("Patients/"+patientname).listFiles().length;
 		PrintWriter writer=null;
 		try {
 			writer = new PrintWriter(new File("Patients/"+patientname+"/session"+num_session+".txt"));
@@ -89,7 +89,7 @@ public class Conversation {
 		//ArrayList<ArrayList<String>> array = new ArrayList<ArrayList<String>>();
 		HashMap<String,ArrayList<String>> table = new HashMap<String,ArrayList<String>>();
 
-		int num_session = new File("Patient/"+patientname).listFiles().length;
+		int num_session = new File("Patients/"+patientname).listFiles().length;
 		String line ="";
 
 		for(int i=0;i<num_session;i++)
@@ -102,7 +102,7 @@ public class Conversation {
 				BufferedReader bufferedReader = new BufferedReader(fileReader);
 
 				while((line = bufferedReader.readLine()) != null) {
-					System.out.println(line);
+					//System.out.println(line);
 					array.add(line);
 				}   
 

@@ -19,24 +19,24 @@ public class Qualifier {
 	 * Creates default set of qualifiers
 	 */
 	public Qualifier(){
-		qualifierSet.add("Why do you say that");
-		qualifierSet.add("You seem to think that");
-		qualifierSet.add("So, you are concerned that");
-		qualifierSet.add("Hmmm, What seems to be the problem with");
-		qualifierSet.add("Other people believe that");
-		qualifierSet.add("Why would you believe that");
-		qualifierSet.add("Do you kill people while");
-		qualifierSet.add("Do you want to talk about why that");
-		qualifierSet.add("Do you see dead people that");
-		qualifierSet.add("I didn't know that");
-		qualifierSet.add("How likely is it that");
-		qualifierSet.add("Some of us in the industry also believe that");
-		qualifierSet.add("Was anyone watching you when");
-		qualifierSet.add("How does it make you feel that");
-		qualifierSet.add("Ultimately, the world doesn't care that");
-	
-	
-	
+		qualifierSet.add("Why do you say that ");
+		qualifierSet.add("You seem to think that ");
+		qualifierSet.add("So, you are concerned that ");
+		qualifierSet.add("Do you really mean that ");
+		qualifierSet.add("Other people believe that ");
+		qualifierSet.add("Why would you believe that ");
+		qualifierSet.add("You are completely wrong when you say that ");
+		qualifierSet.add("Do you want to talk about why that ");
+		qualifierSet.add("Did you really just say that ");
+		qualifierSet.add("What right do you have to suggest that ");
+		qualifierSet.add("Don't you dare say that ");
+		qualifierSet.add("I didn't know that ");
+		qualifierSet.add("How likely is it that ");
+		qualifierSet.add("Some of us in the industry also believe that ");
+		qualifierSet.add("I guess I can't argue that ");
+		qualifierSet.add("How does it make you feel that ");
+		qualifierSet.add("Ultimately, the world doesn't care that ");
+		qualifierSet.add("Honestly, I really don't give a damn that ");
 	
 	}
 	

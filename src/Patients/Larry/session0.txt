@@ -1,0 +1,18 @@
+Welcome to your therapy session! You can call me Dr. Rachael. What would you like to talk about?
+i am worried about my future
+What can you do to fix this issue?
+I can work hard and study hard
+Can you exercise more?
+I suppose exercising would be beneficial
+Please tell me more
+I suffer from anxiety
+Why do you say that you suffer from anxiety
+Sometimes I will have panic attacks in the middle of the night
+Well, at least the weather is nice today
+That doesn't really help me
+On a scale from 1 to 10 how much pain are you in right now?
+I would say that I am at an 8
+What can you do to fix this issue?
+I can try taking medicine
+Did you really just fucking say that you can try taking medicine
+q

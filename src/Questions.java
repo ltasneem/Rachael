@@ -12,28 +12,32 @@ import java.util.Set;
 
 public class Questions {
 	private Set<String> qaSet = new HashSet<String>();
-	private Random rand;
+	private Random rand = new Random();
 	
 	public Questions(){
-		qaSet.add("On a scale from 1 to 10 how much pain are you in right now?");
+
+		qaSet.add("How much pain are you in right now?");
 		qaSet.add("Why do you suck at life?");
 		qaSet.add("Why are you feeling horrible?");
 		qaSet.add("What can you do to fix this issue?");
 		qaSet.add("Do you want medicine for the problem?");
-		qaSet.add("Where do you feel pain?");
-		qaSet.add("Why should we care about you right now?");
-		
-		qaSet.add("How many fingers do you see?");
+		qaSet.add("Have you tried bottling up your feelings inside?");
+		qaSet.add("And you are telling me this... why?");
+		qaSet.add("Do you believe me to be a fool?");
+		qaSet.add("Oh, sorry, did you say something?");
+		qaSet.add("Are you even listening to yourself right now?");
+		qaSet.add("Have you tried bathing every now and then?");		
+		qaSet.add("Would you like to try hypnosis?");
 		qaSet.add("Close your eyes. What do you see in your mind?");
-		qaSet.add("What is your favorite thing to do in the world?");
-		qaSet.add("Who is your favorite person and why is it me?");
-		qaSet.add("What is the meaning of life as we know it?");
+		qaSet.add("What is your favorite thing to do?");
+		qaSet.add("Who is your favorite person in the world?");
+		qaSet.add("What do you think is the meaning of life as we know it?");
 		qaSet.add("What do you do in your free time?");
 		qaSet.add("Can you exercise more?");
 		qaSet.add("What can you do to help me?");
 		
 	}
-	
+	 
 	/**
 	 * Randomly chooses a question to ask from a set of questions
 	 * @return question to ask
