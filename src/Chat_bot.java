@@ -45,22 +45,27 @@ public class Chat_bot {
 		int endSessionCount = 0;
 		while (!input.equals("q")) {
 			if (input.equals("q") && endSessionCount < 3) {
-				System.out.print("Before you leave...");
+				System.out.print("So you want to leave. Before you go tell me...");
 			} else if (input.equals("q") && endSessionCount >= 3) {
 				break;
 			}
 			int responseDecision = rand.nextInt(100);
 			if (responseDecision < 5) {
 				//look back at old convo
+				
 			} else if (responseDecision >= 5 && responseDecision < 10) {
 				//sentiment analysis
 			} else if (responseDecision >= 10 && responseDecision < 40) {
 				//question
 			} else if (responseDecision >= 40 && responseDecision < 70) {
 				//qualify
+				String response = rachael.getRandomQualifier();
+				
 			} else {
 				//hedge
+				
 			}
+			endSessionCount++;
 		}
 		long endTime = System.currentTimeMillis();
 		long sessionTime = endTime - startTime;
