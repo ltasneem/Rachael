@@ -37,7 +37,7 @@ public class Chat_bot {
 		ArrayList<String> log = new ArrayList<String>();
 		
 		
-		//Therapist rachael = new Therapist();
+		Therapist rachael = new Therapist();
 		String input = "";
 		System.out.println("Welcome to your therapy session! You can call me Dr. Rachael. What would you like to talk about?");
 		log.add("Welcome to your therapy session! You can call me Dr. Rachael. What would you like to talk about?");
