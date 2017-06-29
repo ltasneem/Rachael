@@ -25,11 +25,17 @@ public class Chat_bot {
 		System.out.println("Enter your name. I will see if I can pull up any old records for you.");
 		String patient = keyboard.nextLine();
 		
-		//get old sessions
+		
+		//get old sessions or create new patient file
 		Conversation cv = new Conversation();
-		//HashMap<String, ArrayList<String>> prevConvos = cv.load_sessions(patient);
+		HashMap<String, ArrayList<String>> prevConvos;
+		if (!(cv.create_patient_directory(patient))) {
+			prevConvos = cv.load_sessions(patient);
+		}
+		
 		
 		ArrayList<String> log = new ArrayList<String>();
+		
 		
 		//Therapist rachael = new Therapist();
 		String input = "";
@@ -37,7 +43,7 @@ public class Chat_bot {
 		log.add("Welcome to your therapy session! You can call me Dr. Rachael. What would you like to talk about?");
 		input = keyboard.nextLine();
 		int endSessionCount = 0;
-		/*while (!input.equals("q")) {
+		while (!input.equals("q")) {
 			if (input.equals("q") && endSessionCount < 3) {
 				System.out.print("Before you leave...");
 			} else if (input.equals("q") && endSessionCount >= 3) {
@@ -55,10 +61,11 @@ public class Chat_bot {
 			} else {
 				//hedge
 			}
-		}*/
+		}
 		long endTime = System.currentTimeMillis();
 		long sessionTime = endTime - startTime;
 		double cost = (sessionTime / 60000.0) * 10;
+		cv.create_session(patient, log);
 		System.out.printf("You owe me $%.02f for this session. Thanks for your time!", cost);
 		
 	}
