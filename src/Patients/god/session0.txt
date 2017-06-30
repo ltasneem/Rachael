@@ -1,0 +1,8 @@
+Welcome to your therapy session! You can call me Dr. Rachael. What would you like to talk about?
+q
+What do you do in your free time?
+q
+Are you even listening to yourself right now?
+q
+Why are you feeling horrible?
+q

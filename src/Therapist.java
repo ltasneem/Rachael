@@ -15,12 +15,14 @@ public class Therapist {
 	private Qualifier qualifierSet ;
 	private Replacements replacementMap;
 	private Questions questionSet;
+	private Sentiment sentiments;
 	
 	public Therapist() {
 		hedgeSet = new Hedge();
 		qualifierSet = new Qualifier();
 		replacementMap = new Replacements();
 		questionSet = new Questions();
+		sentiments = new Sentiment();
 	}
 	
 	public String hedge() {
@@ -35,8 +37,8 @@ public class Therapist {
 		return questionSet.get();
 	}
 
-	public String sentiment(String input){
-		return "GTFO";
+	public int sentiment(String input){
+		return sentiments.getEmotion(input);
 	}
 	
 }

@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.nio.file.Paths;
 
 public class Sentiment {
 	
@@ -10,52 +11,125 @@ public class Sentiment {
 	private File negFile;
 	private File neuFile;
 	
-	private HashMap<String,Set<String>> replaceSentimentMap = new HashMap<String,Set<String>>();
+	private HashMap<String,Set<String>> sentimentMap = new HashMap<String,Set<String>>();
 	
 	public Sentiment(){
-		
-			replaceSentimentMap.put("Positive",positive);
-			replaceSentimentMap.put("Negative",negative);
-			replaceSentimentMap.put("Neutral",neutral);
+		File root = new File(Paths.get(".").toAbsolutePath().normalize().toString());
+
+		while(!root.getName().equals("Rachael")){
+		 	root = root.getParentFile();
+		}
+		String path = root.getAbsolutePath() + "/Sentiments/";
+
+		posFile = new File(path + "positive-words-1.txt");
+		negFile = new File(path + "negative-words-1.txt");
+		neuFile = new File(path + "neutral-words-1.txt");
+		sentimentMap.put("Positive",positive);
+		sentimentMap.put("Negative",negative);
+		sentimentMap.put("Neutral",neutral);
+		loadWords();
 			
 		
 	}
 
-	private void loadWords() {
+	public void loadWords() {
 
-		posFile = new File("positive-words-1.txt");
-		LinkedList<Customer> customers = new LinkedList<Customer>();
-		
+			
 		try {
-			Scanner sc = new Scanner(file);
+			Scanner sc = new Scanner(posFile);
 			while (sc.hasNextLine()) {
-				String record = sc.nextLine();
-				String[] customer = record.split("\\t");
-				
-				//strict format
-				Customer c = new Customer(customer[0],customer[1],customer[2],customer[3],customer[4],customer[5],customer[6],customer[7],customer[8],customer[9],customer[10]);
-				customers.add(c);
-//				System.out.println(c);
+				String word = sc.nextLine();
+				sentimentMap.get("Positive").add(word);
 				
 			}
 			sc.close();
-			
-			PrintWriter writer=null;
-			 try {
-			     writer = new PrintWriter(new File("output.txt"));
-			     for(Customer c: customers){
-			    	 writer.write(c.getFullName() + "\t" + c.getEmail() + "\n");
-			     }
-			 } catch (FileNotFoundException e) {
-			     System.out.println("File not found");
-			 }
-			 //close the print writer
-			 writer.close();
-		
 		} 
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		posFile = new File()
+	
+		try {
+			Scanner sc = new Scanner(negFile);
+			while (sc.hasNextLine()) {
+				String word = sc.nextLine();
+				sentimentMap.get("Negative").add(word);
+				
+			}
+			sc.close();
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			Scanner sc = new Scanner(neuFile);
+			while (sc.hasNextLine()) {
+				String word = sc.nextLine();
+				sentimentMap.get("Neutral").add(word);
+				
+			}
+			sc.close();
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+	 
+	}
+
+	public boolean addWord(String word, String emotion) {
+		if (!(emotion.equals("Positive") || emotion.equals("Negative") || emotion.equals("Neutral"))) {
+			System.out.println("I am sorry I didnt understand your feelings.");
+			return false;
+		}
+
+		sentimentMap.get(emotion).add(word);
+		return true;
+
+
+	}
+
+	/**
+	* Determines the emotion of the input the user typed in. If the word does not exist
+	* in the ChatBot's dictionary, add it.	
+	* @param input - what the user conveyed to the ChatBot
+	* @return positive integer when emotion is positive
+	*		  negative integer when emotion is negative
+	*		  0 when emotion is neutral 			
+	*/
+	public int getEmotion(String input) {
+		String[] words = input.split(" ");
+		int totalEmotion = 0;
+		for (int i = 0; i < words.length; i++) {
+			String emotion = findWord(words[i]);
+			if (emotion.equals("Positive")) {
+				totalEmotion++;
+			} else if (emotion.equals("Negative")) {
+				totalEmotion--;
+			} else if (emotion.equals("Not Found")) {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("I do not recognize the word " + words[i] + ". Is it 'Positive', 'Negative', or 'Neutral'?");
+				String newEmotion = sc.nextLine();
+				addWord(words[i], newEmotion);
+				if (newEmotion.equals("Positive")) {
+					totalEmotion++;
+				} else if (newEmotion.equals("Negative")) {
+					totalEmotion--;
+				}
+			}
+		}
+		return totalEmotion;
+	}
+
+	private String findWord(String word) {
+		Set<String> keys = sentimentMap.keySet();
+		Iterator<String> iter = keys.iterator();
+		for (int i = 0; i < keys.size(); i++) {
+			String key = iter.next();
+			if (sentimentMap.get(key).contains(word)) {
+				return key;
+			}
+		}
+		return "Not Found";
 	}
 }

@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.nio.file.Paths;
 
 
 /*
@@ -7,6 +8,8 @@ import java.io.*;
  * */
 
 public class Conversation {
+
+	private String path;
 
 	/*Constructor
 	 * */
@@ -21,13 +24,20 @@ public class Conversation {
 	 */
 	public void initialize_directory()
 	{
-		String strDirectoy = "Patients";
+
+		File root = new File(Paths.get(".").toAbsolutePath().normalize().toString());
+
+		while(!root.getName().equals("Rachael")){
+		 	root = root.getParentFile();
+		}
+		path = root.getAbsolutePath()+"/Patients/";
 		try{
-			if(!(new File(strDirectoy)).isDirectory())
+			if(!(new File(path)).isDirectory())
 			{
-				boolean success = (new File(strDirectoy)).mkdir();
+				
+				boolean success = (new File(path)).mkdir();
 				if (success) {
-					System.out.println("Directory: " + strDirectoy + " created");
+				//	System.out.println("Directory: Patients created");
 				}    
 
 			}
@@ -44,11 +54,11 @@ public class Conversation {
 	public boolean create_patient_directory(String patientname)
 	{
 		try{
-			if(!(new File(patientname)).isDirectory())
+			if(!(new File(path + patientname)).isDirectory())
 			{
-				boolean success = (new File("Patients/"+patientname)).mkdir();
+				boolean success = (new File(path+patientname)).mkdir();
 				if (success) {
-					System.out.println("Directory: " + patientname + " created");
+	//				System.out.println("Directory: " + patientname + " created");
 					return true;
 				}  
 			}
@@ -66,10 +76,10 @@ public class Conversation {
 	public void create_session(String patientname, ArrayList<String> file_s)
 	{
 		Iterator<String> iter1 = file_s.iterator();
-		int num_session = new File("Patients/"+patientname).listFiles().length;
+		int num_session = new File(path+patientname).listFiles().length;
 		PrintWriter writer=null;
 		try {
-			writer = new PrintWriter(new File("Patients/"+patientname+"/session"+num_session+".txt"));
+			writer = new PrintWriter(new File(path+patientname+"/session"+num_session+".txt"));
 			for (int i = 0; i < file_s.size(); i++) {
 				String s=iter1.next();
 				writer.println(s);
@@ -89,7 +99,7 @@ public class Conversation {
 		//ArrayList<ArrayList<String>> array = new ArrayList<ArrayList<String>>();
 		HashMap<String,ArrayList<String>> table = new HashMap<String,ArrayList<String>>();
 
-		int num_session = new File("Patients/"+patientname).listFiles().length;
+		int num_session = new File(path+patientname).listFiles().length;
 		String line ="";
 
 		for(int i=0;i<num_session;i++)
@@ -97,7 +107,7 @@ public class Conversation {
 			ArrayList<String> array = new ArrayList<String>();
 			try {
 
-				FileReader fileReader = new FileReader("Patients/"+patientname+"/session"+i+".txt");
+				FileReader fileReader = new FileReader(path+patientname+"/session"+i+".txt");
 
 				BufferedReader bufferedReader = new BufferedReader(fileReader);
 

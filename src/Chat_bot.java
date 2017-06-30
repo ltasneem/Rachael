@@ -79,16 +79,30 @@ public class Chat_bot {
 				} else lookBack = log;
 				int randStatementIndex = rand.nextInt(lookBack.size() / 2);
 				String randStatement = lookBack.get(randStatementIndex * 2 + 1);
+				while(randStatement.equals("q")){
+					randStatementIndex = rand.nextInt(lookBack.size() / 2);
+					randStatement = lookBack.get(randStatementIndex * 2 + 1);
+				}
 				String response = "Earlier you said " + randStatement + ". Tell me why.";
 				System.out.println(response);
 				log.add(response);
 				
 			} else if (responseDecision >= 5 && responseDecision < 10) {
-				String sentiment_response = rachael.sentiment(input);
-				System.out.println(sentiment_response);
-				log.add(sentiment_response);
+				//sentiment
+				int sentiment_response = rachael.sentiment(input);
+				String response = "";
+				if (sentiment_response > 0) {
+					response = "You seem to be happy about that! Tell me more.";
+				} else if (sentiment_response < 0) {
+					response = "That clearly doesn't sit well with you. Please expound.";
+				} else {
+					response = "Why don't you feel happy or sad about that?";
+				}
+				System.out.println(response);
+				log.add(response);
 
 			} else if (responseDecision >= 10 && responseDecision < 40) {
+				//question
 				String question_response = rachael.question();
 				System.out.println(question_response);
 				log.add(question_response);
@@ -114,7 +128,7 @@ public class Chat_bot {
 		long sessionTime = endTime - startTime;
 		double cost = (sessionTime / 60000.0) * 10;
 		cv.create_session(patient, log);
-		System.out.printf("You owe me $%.02f for this session. Thanks for your time!", cost);
+		System.out.printf("You owe me $%.02f for this session. Thanks for your time!\n", cost);
 		
 	}
 
