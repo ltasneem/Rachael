@@ -70,7 +70,7 @@ public class Chat_bot {
 			}
 
 			int responseDecision = rand.nextInt(100);
-			if (responseDecision < 5) {
+			if (responseDecision < 20) {
 				//look back at old convo   * change to input 
 				ArrayList<String> lookBack;
 				if (prevConvos != null) {
@@ -87,7 +87,7 @@ public class Chat_bot {
 				System.out.println(response);
 				log.add(response);
 				
-			} else if (responseDecision >= 5 && responseDecision < 10) {
+			} else if (responseDecision >= 20 && responseDecision < 40) {
 				//sentiment
 				int sentiment_response = rachael.sentiment(input);
 				String response = "";
@@ -101,13 +101,13 @@ public class Chat_bot {
 				System.out.println(response);
 				log.add(response);
 
-			} else if (responseDecision >= 10 && responseDecision < 40) {
+			} else if (responseDecision >= 40 && responseDecision < 60) {
 				//question
 				String question_response = rachael.question();
 				System.out.println(question_response);
 				log.add(question_response);
 
-			} else if (responseDecision >= 40 && responseDecision < 70) {
+			} else if (responseDecision >= 60 && responseDecision < 80) {
 				//qualify
 				String response = rachael.qualify(input);
 				System.out.println(response);
