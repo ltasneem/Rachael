@@ -84,7 +84,29 @@ public class Sentiment {
 		}
 
 		sentimentMap.get(emotion).add(word);
-		return true;
+
+		try {
+			BufferedWriter writer;
+			if ((emotion.equals("Positive"))) {
+				writer = new BufferedWriter(new FileWriter(posFile.getName()));
+			}
+			else if(emotion.equals("Negative")){
+				writer = new BufferedWriter(new FileWriter(negFile.getName()));
+
+			}
+			else{
+				writer = new BufferedWriter(new FileWriter(neuFile.getName()));
+
+			}
+			writer.write(word+"\n");
+
+			writer.close();
+		}catch(IOException io){
+			io.printStackTrace();
+		}
+
+
+			return true;
 
 
 	}
