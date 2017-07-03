@@ -29,7 +29,7 @@ public class Sentiment {
 		sentimentMap.put("Neutral",neutral);
 		loadWords();
 			
-		
+
 	}
 
 	public void loadWords() {
@@ -84,25 +84,40 @@ public class Sentiment {
 		}
 
 		sentimentMap.get(emotion).add(word);
+		FileWriter writer = null;
+		BufferedWriter bw = null;
+		PrintWriter pw = null;
 
 		try {
-			BufferedWriter writer;
+
 			if ((emotion.equals("Positive"))) {
-				writer = new BufferedWriter(new FileWriter(posFile.getName()));
+				writer =new FileWriter(posFile.getAbsolutePath(), true);
 			}
 			else if(emotion.equals("Negative")){
-				writer = new BufferedWriter(new FileWriter(negFile.getName()));
+				writer = new FileWriter(negFile.getAbsolutePath(), true);
 
 			}
 			else{
-				writer = new BufferedWriter(new FileWriter(neuFile.getName()));
-
+				writer = new FileWriter(neuFile.getAbsolutePath(), true);
 			}
-			writer.write(word+"\n");
+			bw = new BufferedWriter(writer);
 
-			writer.close();
+			bw.write(word);
+			bw.newLine();
+
 		}catch(IOException io){
 			io.printStackTrace();
+		} finally {
+			try {
+				if (bw != null) {
+					bw.close();
+				}
+				if (writer != null) {
+					writer.close();
+				}
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
 		}
 
 
